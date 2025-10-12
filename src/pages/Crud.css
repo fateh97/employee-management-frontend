@@ -1,0 +1,65 @@
+.crud-page {
+    padding: 20px;
+}
+
+.crud-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.crud-form input,
+.crud-form select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.crud-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.crud-form button:hover {
+    background-color: #0056b3;
+}
+
+.crud-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.crud-table th,
+.crud-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.crud-table th {
+    background-color: #f4f4f4;
+    text-align: left;
+}
+
+.edit {
+    color: #007bff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.delete {
+    color: red;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.edit:hover,
+.delete:hover {
+    text-decoration: underline;
+}
