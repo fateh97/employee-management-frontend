@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import axios from "axios";
-import "./Crud.css";
+import styles from "./Crud.module.css"; // Use CSS module import
 
 function Departments() {
+    // --- THIS LOGIC WAS MISSING ---
     const [departments, setDepartments] = useState([]);
     const [form, setForm] = useState({ name: "", description: "" });
     const [editingId, setEditingId] = useState(null);
@@ -19,24 +20,15 @@ function Departments() {
         e.preventDefault();
         try {
             if (editingId) {
-                await axios.post(`/api/departments/${editingId}/edit`, form, {
-                    headers: { "Content-Type": "application/json" }
-                });
+                await axios.post(`/api/departments/${editingId}/edit`, form);
             } else {
-                await axios.post("/api/departments", form, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json",
-                    }
-                },);
+                await axios.post("/api/departments", form);
             }
-
             setForm({ name: "", description: "" });
             setEditingId(null);
             fetchDepartments();
         } catch (error) {
             console.error("Error submitting form:", error.response || error.message);
-            alert(`Error: ${error.response?.data?.message || error.message}`);
         }
     };
 
@@ -46,23 +38,20 @@ function Departments() {
     };
 
     const handleDelete = async (id) => {
-        if (!window.confirm("Are you sure you want to delete this employee?")) return;
-
+        if (!window.confirm("Are you sure?")) return;
         try {
-            await axios.post(`api/departments/${id}/delete`, null, {
-                headers: { "Content-Type": "application/json" }
-            });
-            fetchDepartments(); // reload employee list
+            await axios.post(`api/departments/${id}/delete`);
+            fetchDepartments();
         } catch (error) {
             console.error("Delete failed:", error);
         }
     };
+    // --- END OF MISSING LOGIC ---
 
     return (
-        <div className="crud-page">
+        <div className={styles.crudPage}>
             <h1>Departments</h1>
-
-            <form className="crud-form" onSubmit={handleSubmit}>
+            <form className={styles.crudForm} onSubmit={handleSubmit}>
                 <input
                     type="text"
                     placeholder="Name"
@@ -79,7 +68,7 @@ function Departments() {
                 <button type="submit">{editingId ? "Update" : "Add"}</button>
             </form>
 
-            <table className="crud-table">
+            <table className={styles.crudTable}>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -93,8 +82,8 @@ function Departments() {
                             <td>{dep.name}</td>
                             <td>{dep.description}</td>
                             <td>
-                                <button onClick={() => handleEdit(dep)} className="edit">Edit</button>
-                                <button onClick={() => handleDelete(dep.id)} className="delete">Delete</button>
+                                <button onClick={() => handleEdit(dep)} className={styles.edit}>Edit</button>
+                                <button onClick={() => handleDelete(dep.id)} className={styles.delete}>Delete</button>
                             </td>
                         </tr>
                     ))}

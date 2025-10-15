@@ -29,7 +29,7 @@ export default function Register() {
         }
 
         try {
-            await axios.post("http://localhost:8080/api/register", {
+            await axios.post("/api/register", {
                 name: form.name,
                 email: form.email,
                 password: form.password,

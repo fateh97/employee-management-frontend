@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 import axios from "axios";
-import "./Crud.css";
+import styles from "./Crud.module.css"; // Use CSS module import
 
 function Employees() {
+    // --- THIS LOGIC WAS MISSING ---
     const [employees, setEmployees] = useState([]);
     const [departments, setDepartments] = useState([]);
     const [form, setForm] = useState({ fullname: "", email: "", department_id: "", salary: "" });
@@ -23,16 +24,9 @@ function Employees() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (editingId) {
-            await axios.post(`/api/employees/${editingId}/edit`, form, {
-                headers: { "Content-Type": "application/json" }
-            });
+            await axios.post(`/api/employees/${editingId}/edit`, form);
         } else {
-            await axios.post("/api/employees", form, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                }
-            });
+            await axios.post("/api/employees", form);
         }
         setForm({ fullname: "", email: "", department_id: "", salary: "" });
         setEditingId(null);
@@ -50,12 +44,12 @@ function Employees() {
             fetchData();
         }
     };
+    // --- END OF MISSING LOGIC ---
 
     return (
-        <div className="crud-page">
+        <div className={styles.crudPage}>
             <h1>Employees</h1>
-
-            <form className="crud-form" onSubmit={handleSubmit}>
+            <form className={styles.crudForm} onSubmit={handleSubmit}>
                 <input
                     type="text"
                     placeholder="Name"
@@ -90,7 +84,7 @@ function Employees() {
                 <button type="submit">{editingId ? "Update" : "Add"}</button>
             </form>
 
-            <table className="crud-table">
+            <table className={styles.crudTable}>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -108,8 +102,8 @@ function Employees() {
                             <td>{emp.department?.name}</td>
                             <td>RM {emp.salary}</td>
                             <td>
-                                <button onClick={() => handleEdit(emp)} className="edit">Edit</button>
-                                <button onClick={() => handleDelete(emp.id)} className="delete">Delete</button>
+                                <button onClick={() => handleEdit(emp)} className={styles.edit}>Edit</button>
+                                <button onClick={() => handleDelete(emp.id)} className={styles.delete}>Delete</button>
                             </td>
                         </tr>
                     ))}

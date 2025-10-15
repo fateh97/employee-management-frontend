@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
-import "./Dashboard.css";
+import styles from "./Dashboard.module.css"; // <-- Import as an object
 
 function Dashboard() {
     const [data, setData] = useState(null);
@@ -12,27 +12,26 @@ function Dashboard() {
     if (!data) return <p>Loading...</p>;
 
     return (
-        <div className="dashboard">
+        // Use the styles object for all class names
+        <div className={styles.dashboard}>
             <h1>Dashboard</h1>
 
-            <div className="card-grid">
-                <div className="card">
+            <div className={styles.cardGrid}>
+                <div className={styles.card}>
                     <h3>Total Employees</h3>
-                    <p className="big-number">{data.totalEmployees}</p>
+                    <p className={styles.bigNumber}>{data.totalEmployees}</p>
                 </div>
 
-                <div className="card">
+                <div className={styles.card}>
                     <h3>Employees by Department</h3>
                     <ul>
                         {data.employeesByDept.map((d) => (
-                            <li key={d.id}>
-                                {d.name}: {d.employees_count}
-                            </li>
+                            <li key={d.id}>{d.name}: {d.employees_count}</li>
                         ))}
                     </ul>
                 </div>
 
-                <div className="card">
+                <div className={styles.card}>
                     <h3>Average Salary by Department</h3>
                     <ul>
                         {data.avgSalaryByDept.map((d) => (

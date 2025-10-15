@@ -1,5 +1,5 @@
 /* --- Login.css --- */
-body {
+.login-body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #4e73df, #1cc88a);
     height: 100vh;

@@ -1,14 +1,27 @@
-import { Link } from "react-router-dom";
-import "./Navbar.css";
+import { NavLink, useNavigate } from "react-router-dom"; 
+import styles from "./Navbar.module.css";
 
 function Navbar() {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/login");
+    };
+
     return (
-        <nav className="navbar">
-            <div className="nav-logo">Employee Management System</div>
-            <div className="nav-links">
-                <Link to="/">Dashboard</Link>
-                <Link to="/employees">Employees</Link>
-                <Link to="/departments">Departments</Link>
+        <nav className={styles.navbar}>
+            <NavLink to="/dashboard" className={styles.navLogo}>
+                Employee Management System
+            </NavLink>
+            <div className={styles.navLinks}>
+                <NavLink to="/dashboard">Dashboard</NavLink>
+                <NavLink to="/employees">Employees</NavLink>
+                <NavLink to="/departments">Departments</NavLink>
+
+                <button onClick={handleLogout} className={styles.logoutButton}>
+                    Logout
+                </button>
             </div>
         </nav>
     );
