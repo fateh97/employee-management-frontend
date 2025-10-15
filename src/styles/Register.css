@@ -1,0 +1,87 @@
+/* --- Register.css --- */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #4e73df, #1cc88a);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.register-container {
+    background: white;
+    width: 420px;
+    padding: 30px 25px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.register-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.register-container input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+    transition: border 0.2s ease-in-out;
+}
+
+.register-container input:focus {
+    border-color: #4e73df;
+}
+
+.register-container button {
+    background-color: #1cc88a;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.register-container button:hover {
+    background-color: #17a673;
+}
+
+.register-container p {
+    text-align: center;
+    margin-top: 10px;
+    color: #333;
+}
+
+.register-container a {
+    color: #4e73df;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-container a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.success-message {
+    color: green;
+    text-align: center;
+    margin-bottom: 10px;
+}
