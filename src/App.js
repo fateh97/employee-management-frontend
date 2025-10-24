@@ -26,7 +26,7 @@ export default function App() {
             <Route path="/register" element={<Register />} />
 
             {/* All pages inside here will have the Navbar */}
-            <Route path="/" element={<MainLayout />}> 
+            <Route path="/" element=element={<PrivateRoute><MainLayout /></PrivateRoute>}> 
                 <Route index element={<Dashboard />} /> 
                 
                 <Route path="dashboard" element={<Dashboard />} /> 
